@@ -1,13 +1,34 @@
 # Coping with Plenitude:  A Computational Approach to Selecting the Right Algorithm 
 
-## DISCLAIMER: This github page is still a work in progress. It will be updated regularly as I work to clean and prepare the code ahead of publication.
+In this paper, we provide a strategy for selecting the best algorithm given a set of data when using Relational Class Analysis (RCA). Due to limitations on GitHub regarding the size of files, we have moved the code and data that we developed for this method to a public Google Drive folder. You can find it at the following link: https://drive.google.com/drive/folders/1tvPSUberqbiiB48cWTfcS95eQdQsWHO-
 
-Here, you can find the code and data for the paper, "Coping with Plenitude:  A Computational Approach to Selecting the Right Algorithm", by Sotoudeh and DiMaggio, forthcoming in SMR. All of the analyses were performed in R. The data come from publically available data sets, including the General Social Survey (https://gss.norc.org/) and the American National Election Survey (https://electionstudies.org/). The core functions are described and included in the file, functions.R. The code for running the grid-search simulations is included in simulations.R. The main analyses of the grid-search results is in gridsearch_results.R. Analyses of and predictions for the empirical data can be found in empirical_analyses.R. Finally, the validation analyses are in the script validation.R. Certain scripts are dependent on the results of previous scripts and so below we suggest an order to run them:
+The folder contains four files. The .RDS files contain the simulations from the paper, which are used to fit models for selecting the best performing algorithm for your data. The .cpp file contains a C+ implementation of relationality that greatly speeds up its calculation. 
 
-1. functions.R
-2. simulations.R
-3. gridsearch_analyses.R
-4. empirical_analyses.R
-5. validation.R
+The primary file that you will use to perform metafeature selection is metafeature_RCA.R. It contains four primary functions:
 
-Please feel free to direct any questions you may have about the code or paper to sotoudeh@princeton.edu. 
+1. evaluate.metafeatures() -- calculates the relevant metafeatures on your data.
+2. predict.accuracies() -- uses the models provided in the RDS files to predict how accurately each distance measure/algorithm will perform on your data given the calculated metafeatures
+3. select.method() -- selects the best available distance measure/algorithm given the predicted accuracies calculated in the previous step
+4. metaRCA() -- which runs RCA using the selected distance measure
+
+The basic workflow looks like this:
+
+First, evaluate metafeatures on your data. 
+
+```metafeatures = evaluate.metafeatures(data)```
+
+Second, predict which measure will be most accurate given your data's metafeatures and the models provided in the .RDS files.
+
+``` predictions = predict.accuracies(, models)```
+
+Third, select the top N measures for your data. 
+
+```top_measure = select.method(example_data, models, n = 1)```
+
+Fourth, run RCA using that measure. 
+
+```rca_result = metaRCA(example_data, measure = names(top_1[1]))```
+
+
+
+Please feel free to direct any questions you may have about the code or paper to ramina.sotoudeh@yale.edu. 
