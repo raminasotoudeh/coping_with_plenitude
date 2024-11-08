@@ -1,6 +1,6 @@
 # Coping with Plenitude:  A Computational Approach to Selecting the Right Algorithm 
 
-In this paper, we provide a strategy for selecting the best algorithm given a set of data when using Relational Class Analysis (RCA). Due to limitations on GitHub regarding the size of files, we have moved the code and data that we developed for this method to a public Google Drive folder. You can find it at the following link: https://drive.google.com/drive/folders/1tvPSUberqbiiB48cWTfcS95eQdQsWHO-
+In this paper, we provide a strategy for selecting the best algorithm given a set of data when using Relational Class Analysis (RCA). Due to limitations on GitHub regarding the size of files, we have moved the code and data that we developed for this method to a public Google Drive folder. You can find it at the following link: [https://drive.google.com/drive/folders/1tvPSUberqbiiB48cWTfcS95eQdQsWHO-](https://drive.google.com/drive/folders/1TxvPMWHjX-ZK1Ih0IRX-FvRNFNmxMmcc?usp=sharing)
 
 The folder contains four files. The .RDS files contain the simulations from the paper, which are used to fit models for selecting the best performing algorithm for your data. The .cpp file contains a C+ implementation of relationality that greatly speeds up its calculation. 
 
